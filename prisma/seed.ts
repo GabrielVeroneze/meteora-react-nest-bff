@@ -1,5 +1,7 @@
-import { Category } from 'generated/prisma/client';
-import { prisma } from '../src/database/prisma.client';
+import { PrismaClient } from '@prisma/client';
+import { Category } from '../generated/prisma/client';
+
+const prisma = new PrismaClient();
 
 interface Product {
   name: string;

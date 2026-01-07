@@ -1,8 +1,8 @@
 import { useQuery } from '@apollo/client/react'
 import { GET_CATEGORIES } from '@/graphql/queries/categories'
 import { CategoryList, Container } from './styles'
-import Category from '@/components/Category'
 import type { Category } from '@graphql-types/generated-types'
+import CategoryItem from '@/components/CategoryItem'
 import Heading from '@/components/Heading'
 
 const Categories = () => {
@@ -14,7 +14,7 @@ const Categories = () => {
             <CategoryList>
                 {data?.categories.map((c) => (
                     <li key={c.id}>
-                        <Category name={c.displayName} image={c.icon} />
+                        <CategoryItem name={c.displayName} image={c.icon} />
                     </li>
                 ))}
             </CategoryList>

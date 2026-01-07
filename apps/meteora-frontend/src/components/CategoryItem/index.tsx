@@ -1,11 +1,11 @@
 import { FigCaption, Figure, Img } from './styles'
 
-interface CategoryProps {
+interface CategoryItemProps {
     name: string
     image: string
 }
 
-const Category = ({ name, image }: CategoryProps) => {
+const CategoryItem = ({ name, image }: CategoryItemProps) => {
     return (
         <Figure>
             <Img src={image} alt={name} />
@@ -14,4 +14,4 @@ const Category = ({ name, image }: CategoryProps) => {
     )
 }
 
-export default Category
+export default CategoryItem

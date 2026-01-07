@@ -1,8 +1,8 @@
 import { useQuery } from '@apollo/client/react'
 import { GET_CATEGORIES } from '@/graphql/queries/categories'
-import { Category } from '@graphql-types/generated-types';
 import { CategoryList, Container } from './styles'
 import Category from '@/components/Category'
+import type { Category } from '@graphql-types/generated-types'
 import Heading from '@/components/Heading'
 
 const Categories = () => {

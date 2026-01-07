@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client/react'
 import { GET_PRODUCTS } from '@/graphql/queries/products'
-import { Product } from '@graphql-types/generated-types'
 import { GridContainer, ProductContainer } from './styles'
+import type { Product } from '@graphql-types/generated-types'
 import CardProduct from '@/components/CardProduct'
 import Heading from '@/components/Heading'
 

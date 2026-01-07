@@ -1,5 +1,5 @@
-import { Product } from '@graphql-types/generated-types'
 import { Card, CardImage, CardContent, CardFooter, CardBody } from './styles'
+import type { Product } from '@graphql-types/generated-types'
 import Button from '@/components/Button'
 
 interface CardProductInterface {

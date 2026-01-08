@@ -1,0 +1,35 @@
+# Utilizando a imagem do Node.js para construir o projeto
+FROM node:22-alpine as build
+
+# Definindo o diretório de trabalho dentro do container
+WORKDIR /app
+
+# Copiando os arquivos do package.json e package-lock.json para o container
+COPY apps/meteora-frontend/package*.json ./
+
+# Instalando as dependências do frontend
+RUN npm install && npm install -g typescript@latest
+
+# Copiando todo o código fonte para o container
+COPY apps/meteora-frontend/ ./
+
+# Copiando o arquivo de configuração do tsconfig da raiz do monorepo
+COPY tsconfig.json ./tsconfig.json
+
+# Adicionando configurações de bibliotecas adicionais
+RUN npm install @types/node --save-dev
+
+# Copiando os arquivos necessários da biblioteca compartilhada
+COPY apps/libs/graphql-types ./apps/libs/graphql-types
+
+# Rodando o build para produção
+RUN npm run build
+
+# Utilizando a imagem do nginx para servir o build do frontend
+FROM nginx:alpine
+
+# Copiando os arquivos de build para o diretório do Nginx
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Definindo o comando de inicialização do container
+CMD ["nginx", "-g", "daemon off;"]

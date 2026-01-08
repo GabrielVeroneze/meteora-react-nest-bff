@@ -18,6 +18,11 @@ export default defineConfig([
         languageOptions: {
             ecmaVersion: 2020,
             globals: globals.browser,
+            tsconfigRootDir: path.resolve(process.cwd()),
+            project: [
+                './apps/meteora-frontend/tsconfig.json',
+                './apps/meteora-backend/tsconfig.json',
+            ],
         },
     },
 ])
